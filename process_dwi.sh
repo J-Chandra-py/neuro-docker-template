@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -u
 
+# Pipeline based on MRtrix3 and FSL/ANTs; DWI processing logic contributed by @MajidRamedani, DZNE.
 # DWI preprocessing on BIDS dwi folders.
 # Keeps final preprocessed NIfTI + gradients, acqparams.txt, logs, and selected eddy QC text files.
 # Logs overall subject status (SUCCESS, FAILED, SKIPPED) to processing_status.csv
