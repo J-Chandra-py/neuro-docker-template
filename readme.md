@@ -1,7 +1,3 @@
-Here is the slightly condensed version. It trims the wordiness and condenses the citation lists using "et al." to make the document punchier, while keeping all the critical instructions, SEO keywords, and technical accuracy intact.
-
----
-
 # Containerized Neuroimaging Processing Template
 
 **Implementation: DWI Preprocessing Pipeline**
