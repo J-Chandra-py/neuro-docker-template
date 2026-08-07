@@ -51,7 +51,7 @@ The pipeline requires a standard BIDS directory structure. Each subject's `dwi` 
 
 Results are written to the mapped output directory:
 
-* **`processing_status.csv`**: Master list of successful, failed, or skipped subjects.
+* **`processing_status.csv`**: Master list of successful, failed or skipped subjects.
 * **`/logs`**: Individual processing logs.
 * **`/skipped`**: Error details for subjects lacking required inputs.
 
