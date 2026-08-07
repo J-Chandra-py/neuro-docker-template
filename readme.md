@@ -8,8 +8,6 @@ Here is the slightly condensed version. It trims the wordiness and condenses the
 
 This repository provides a Dockerized pipeline for preprocessing Diffusion-Weighted Imaging (DWI) data, utilizing FSL (`eddy_cuda`), MRtrix3, and ANTs for denoising, artifact removal, and bias field correction.
 
-## Motivation & Context
-
 Local neuroimaging setups often face dependency hurdles, such as **MRtrix setup on Linux** complexities or **N4BiasFieldCorrection errors** from **compile from source issues** on newer systems like **Ubuntu 24.04**. This container provides a reproducible environment using pre-compiled binaries. Additionally, its entrypoint automatically resolves common Docker **user permission issues** by restoring correct **file ownerships** for host-mounted outputs.
 
 ## Prerequisites
