@@ -14,6 +14,7 @@ PIPELINE_LOG="${LOG_DIR}/pipeline.log"
 SKIPPED_DIR="${DERIV_DIR}/skipped"
 SKIPPED_LOG="${SKIPPED_DIR}/skipped_missing_acqparams.csv"
 STATUS_LOG="${DERIV_DIR}/processing_status.csv"
+SUBJECTS="${SUBJECTS:-}"
 
 trap 'echo -e "\n[!] Pipeline interrupted by user! Aborting..."; exit 130' INT TERM
 
@@ -27,12 +28,22 @@ echo "subject,status,info" > "${STATUS_LOG}"
 TEST_SUBJECTS="${TEST_SUBJECTS:-0}"
 CLEAN_INTERMEDIATES="${CLEAN_INTERMEDIATES:-1}"
 
+
 TOTAL=0
 SUCCESS=0
 FAIL=0
 PROCESSED=0
 
-for subject_dir in "${BIDS_DIR}"/sub-*/; do
+if [ -n "${SUBJECTS}" ]; then
+    subject_list=$(for s in ${SUBJECTS}; do printf '%s\n' "${s}"; done)
+else
+    subject_list=$(for d in "${BIDS_DIR}"/sub-*; do [ -d "${d}" ] && basename "${d}"; done | sort)
+fi
+
+for subject in ${subject_list}; do
+    subject_dir="${BIDS_DIR}/${subject}/"
+    [ -d "${subject_dir}" ] || continue
+
     if [ "${TEST_SUBJECTS}" -gt 0 ] && [ "${PROCESSED}" -ge "${TEST_SUBJECTS}" ]; then
         echo "Test mode: reached ${TEST_SUBJECTS} subject(s), stopping." | tee -a "${PIPELINE_LOG}"
         break
